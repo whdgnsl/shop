@@ -1,0 +1,219 @@
+@charset "UTF-8";
+a{
+	text-decoration: none;
+}
+
+* {
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+}
+html {
+height: 100%;
+}
+body {
+margin: 0;
+height: 100%;
+}
+.wrap {
+min-height: 100%;
+position: relative;
+padding-bottom:250px; /* footer height */
+}
+
+/* .menu{ */
+/* 	height:100%; */
+/* 	background-color: #1E3163; */
+/* } */
+
+.menu{
+	width:100%;
+}
+#menu_body {
+  margin: 0;
+  padding: 0;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+
+
+nav {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height:71px;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main-menu > li {
+  float: left;
+  position: relative;
+}
+
+#main-menu > li > a {
+  font-size:1.9rem;
+  color: white;
+  text-align:center;
+/*   text-decoration: none; */
+/*   letter-spacing: 0.2em; */
+  display: block;
+  padding: 15px;
+  width:180px;
+/*   text-shadow: 1px 1px 1px rgba(0,0,0,0.2); */
+  height: 70px;
+}
+
+.menu .menu-trigger{
+	cursor:pointer;
+	font-size: 1.7rem;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    display: block;
+    padding: 15px;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 20%);
+    height: 70px;
+}
+.hide a{
+	cursor:pointer;
+	font-size: 1.1rem;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    display: block;
+    padding: 15px;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 20%);
+    height: 70px;
+}
+
+.menu .hide{
+	display:none;
+	height: 10%;
+}
+
+.sub-menu{
+	width: 100%;
+	height: 70px;
+	text-align: center;
+}
+.menu .hide a{
+	background-color: #1E3163;
+	text-align:center;
+}
+
+.sideBar{
+	width: 15%;
+	height: 100%;
+/* 	background-color: #1E3163; */
+	float: right;
+}
+.box{
+	background-color: #1E3163;
+/* 	padding:10px; */
+}
+
+.box span{
+	background-color: #1E3163;
+	text-align:left;
+/* 	display: inline-block; */
+	width:25%;
+	font-size:0.9rem;
+	padding:10px;
+}
+
+.test{
+	background-color: #1E3163;
+	height: 150px;
+	padding:5px;
+	text-align:center;
+}
+
+.loginmember{
+	height:300px;
+	background-color: #1E3163;
+}
+
+.loginmember span{
+	font-size: 1.0rem;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    display: block;
+    padding: 15px;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 20%);
+    height: 70px;
+	text-align:left;
+	display: inline-block;
+	width:100%;
+	height: 60px;
+	background-color: #505D81;
+	width:95%;
+}
+.membersNickName{
+/* 	margin:5px 5px 0px 5px; */
+	opacity:0.9;
+	cursor:default;
+}
+
+.membersPoint{
+/* 	margin:0px 5px 0px 5px; */
+	opacity:0.9;
+	cursor:default;
+}
+.myPage{
+	opacity:0.9;
+	cursor:pointer;
+}
+.membersList{
+/* 	margin:0px 5px 0px 5px; */
+	opacity:0.9;
+	cursor:pointer;
+}
+.logout{
+/* 	margin:0px 5px 5px 5px; */
+	opacity:0.9;
+	cursor:pointer;
+}
+
+#id, #pw{
+	font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    display: block;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 20%);
+    width:100%;
+    height:50%;
+    text-align:left;
+}
+
+#members_id, #members_pw{
+	background-color : white;
+/* 	width:75%; */
+	width:100%;
+	padding:10px;
+	
+}
+.login, #membership{
+	background-color: #505D81;
+	opacity:0.9;
+	font-size:0.9rem;
+	color:white;
+	padding:10px;
+	margin:5px 0px 0px 0px;
+	width:100%;
+}
+.logForm{
+	padding:10px;
+	background-color: #1E3163;
+}

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+*{
+	background-color: #C7C2C2;
+}
+
+.content{
+	margin:0 auto; 
+	text-align:center;
+	width:85%;
+	height:100%;
+	float: left;
+}
+
+#main{
+	width:90%;
+	float:right
+}
+
+span{
+	display:inline-block;
+}
