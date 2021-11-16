@@ -115,17 +115,26 @@ public class ProductController {
 	}
 	
 	//상품 리스트
-	@RequestMapping("product.do")
+	@RequestMapping(value= {"product.do", "main.do"})
 	public ModelAndView productList(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) throws Exception{
 		List<ProductDTO> productList = productService.productList();
 		mv.addObject("productList", productList);
-		mv.setViewName("productList");
+		
+		if(request.getServletPath().equals("/product.do")) {
+			mv.setViewName("productList");
+			
+		}else if(request.getServletPath().equals("/main.do")) {
+			mv.setViewName("main");
+		}
+		
 		
 		HttpSession session = request.getSession();
 		MemberDTO memberDto =(MemberDTO)session.getAttribute("MDTO");
 		Boolean isLogin = (Boolean)session.getAttribute("isLogin");
 		mv.addObject("memberDTO", memberDto);
 		mv.addObject("isLogin", isLogin);
+		System.out.println("memberDTO = "+ memberDto);
+		System.out.println("isLogin = "+ isLogin);
 		System.out.println(mv);
 		return mv;
 	}

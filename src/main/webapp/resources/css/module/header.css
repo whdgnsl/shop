@@ -43,3 +43,7 @@ ul, li {
   position: relative;
 }
 
+#logoImg{
+	height: 100%;
+	background-color: #1E3163;
+}

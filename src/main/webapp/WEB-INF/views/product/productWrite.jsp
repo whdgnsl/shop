@@ -35,8 +35,9 @@ display: inline-block;
    
 	   	<select name="product_kind">
 	   		<option selected="selected" value="종류">종류</option>
+	   		<option value="액상">입호흡</option>
+	   		<option value="액상">폐호흡</option>
 	   		<option value="기기">기기</option>
-	   		<option value="액상">액상</option>
 	   		<option value="기타">기타</option>
 	   	</select>
    	

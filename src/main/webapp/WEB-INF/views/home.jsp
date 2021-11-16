@@ -13,12 +13,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
-*{
-	background-color: #C7C2C2;
-}
-</style>
+<link rel="stylesheet" media="all" type="text/css" href="${contextPath}/resources/css/home.css" />
 </head>
 <body>
+
+	<div class="content">
+		<img id="logoImg" src="${contextPath}/resources/css/img/vpae-logo.png">
+	
+		<div class="main-form">
+			<form name="logForm" id="logForm" class="logForm" method="post" action="${contextPath}/member/loginPath.do">
+				<div id="id" class="box">
+					<input type="text" id="members_id" name="members_id" placeholder="ID"> 
+				</div>
+				<div id="pw" class="box">
+					<input type="password" id="members_pw" name="members_pw" placeholder="PW">
+				</div>
+			<div class="button">
+				<button type="submit" class="login" id="logForm" name="logForm"  >LOGIN</button>
+				<button type="button" class="membership" id="membership" onclick="location.href='${contextPath}/joinmembership.do'" >JOIN</button>
+			</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

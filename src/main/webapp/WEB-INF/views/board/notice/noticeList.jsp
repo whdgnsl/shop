@@ -27,7 +27,6 @@
 		<span id="notice_count">Count</span>
 	</div>
 	
-	
 	<c:forEach items="${notice}" var="notice" varStatus="status">
 		<div id="main">
 			<span id="notice_no_re">${status.count}</span>

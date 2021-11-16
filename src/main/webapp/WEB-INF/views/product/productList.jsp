@@ -17,27 +17,30 @@
 </head>
 <body>
 
+
+
 <div id="content">	
-	<c:forEach  var="productList"  items="${productList}">
-			
-			<div class="product">
-			<span>
-				<a href="${contextPath}/productDetail.do?product_no=${productList.product_no}">
-					<img class="mvImg" src="${contextPath}/thumbnails.do?product_no=${productList.product_no}&product_image_fileName=${productList.product_image_fileName}">
-				</a>
-			
-				<div id="productTitle">
-					<span>[${productList.product_kind}]</span> 
-					<span>${productList.product_name}</span>
+	<div id="main">
+			<c:forEach  var="productList"  items="${productList}">
+				<div id="product">
+					<span>
+						<a href="${contextPath}/productDetail.do?product_no=${productList.product_no}">
+							<img class="productImg" src="${contextPath}/thumbnails.do?product_no=${productList.product_no}&product_image_fileName=${productList.product_image_fileName}">
+						</a>
+					
+						<div id="product">
+							<span>[${productList.product_kind}]</span> 
+							<span>${productList.product_name}</span>
+						</div>
+					</span>
 				</div>
-			</span>
-		</div>
-	</c:forEach>
+			</c:forEach>
+		<c:if test="${memberDTO.members_kind=='ad'}">
+			<div id="WriteForm">
+		   		<h2><a href="${contextPath}/productWrite.do">작성</a></h2> 
+			</div>
+		</c:if>
+	</div>
 </div>
-	<c:if test="${memberDto.members_kind=='ad'}">
-		<div id="WriteForm">
-	   		<a href="${contextPath}/productWrite.do">작성</a> 
-		</div>
-	</c:if>
 </body>
 </html>

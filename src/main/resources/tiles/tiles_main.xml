@@ -4,10 +4,18 @@
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
-	<!--  <definition name="baseLayout">부분은 공통레이아웃의 view이름을 뜻한다  
-	   template="/WEB-INF/views/common/layout.jsp"은
-	     전체 레이아웃을 정하는 jsp문서의 위치를 뜻한다
-	-->
+
+	<definition name="homeLayout" template="/WEB-INF/views/common/homelayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body"   value=""/>
+	</definition>
+	
+	<!-- extends="baseLayout"속성은  기본적인 레이아웃은 "baseLayout"을 상속받는다라는 뜻   -->
+	<definition name="home" extends="homeLayout">
+		<put-attribute name="title" value="시가몰" />
+		<put-attribute name="body"  value="/WEB-INF/views/home.jsp" />
+	</definition>
+	
 	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
@@ -15,10 +23,9 @@
 		<put-attribute name="body"   value=""/>
 	</definition>
 	
-	<!-- extends="baseLayout"속성은  기본적인 레이아웃은 "baseLayout"을 상속받는다라는 뜻   -->
-	<definition name="home" extends="baseLayout">
-		<put-attribute name="title" value="시가몰" />
-		<put-attribute name="body"  value="/WEB-INF/views/home.jsp" />
+	<definition name="main" extends="baseLayout">
+		<put-attribute name="title" value="공지사항" />
+		<put-attribute name="body"  value="/WEB-INF/views/main.jsp" />
 	</definition>
 	
 	<definition name="noticeList" extends="baseLayout">

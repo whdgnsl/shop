@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+*{
+	background-color: #C7C2C2;
+}
+
+.content{
+	margin:0 auto; 
+	width:85%;
+	height:100%;
+	float: left;
+}
+
+#kind-1, #kind-2, #kind-3, #kind-4{
+	display:inline-block;
+	width:49%;
+	height: 25%;
+	padding:40px;
+	text-align:center;
+	border : 1px black solid;
+	margin:5px;
+	background-color: white;
+	font-size: 1.5rem;
+	cursor:pointer;
+}

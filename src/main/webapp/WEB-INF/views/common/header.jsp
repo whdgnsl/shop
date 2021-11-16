@@ -12,8 +12,24 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <div class="frame">
-		  <ul id="main-menu">
-		  		<li><a href="${contextPath}/">C i g a r</a></li>
-		  </ul>
+	<c:if test="${MDTO==null}">
+		<ul id="main-menu">
+			<li>
+				<a id="logoImg-a" href="${contextPath}/">
+					<img id="logoImg" src="${contextPath}/resources/css/img/vpae-logo.png">
+				</a>
+			</li>
+		</ul>
+	</c:if>
+	<c:if test="${MDTO!=null}">
+		<ul id="main-menu">
+			<li>
+				<a id="logoImg-a" href="${contextPath}/main.do">
+					<img id="logoImg" src="${contextPath}/resources/css/img/vpae-logo.png">
+				</a>
+			</li>
+		</ul>
+	</c:if>
+	
 </div>
 </html>

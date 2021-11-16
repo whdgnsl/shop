@@ -11,11 +11,18 @@
 	float: left;
 }
 
-#main{
-	width:90%;
-	float:right
-}
-
 span{
 	display:inline-block;
+	width: 10px;
+	height: 10px;
+}
+
+.productImg{
+	width: 100px;
+	height: 100px;
+}
+
+#product{
+	width:10%;
+	float:left
 }
