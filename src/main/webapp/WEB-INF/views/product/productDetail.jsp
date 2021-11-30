@@ -64,7 +64,7 @@
 					<span>배송비  </span>
 				</td>
 				<td id="product_quick_price">
-					<span>3,000원</span>
+					<span>5,000원</span>
 				</td>
 				</tr>
 				<tr>
