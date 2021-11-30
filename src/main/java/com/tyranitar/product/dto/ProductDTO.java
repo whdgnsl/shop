@@ -1,5 +1,7 @@
 package com.tyranitar.product.dto;
 
+import java.util.Date;
+
 public class ProductDTO {
 	
 	private int product_no; //상품 번호
@@ -12,12 +14,19 @@ public class ProductDTO {
 	private String product_image_filetype;
 	private int product_image_no;
 	private int rownum;
+	private int product_price;
+	private Date product_date;
+	private Date product_image_date;
+	
 	
 	public ProductDTO() {}
-	
+
+
+
+
 	public ProductDTO(int product_no, String product_name, String product_mainInfo, String product_stock,
 			String product_kind, String product_count, String product_image_fileName, String product_image_filetype,
-			int product_image_no, int rownum) {
+			int product_image_no, int rownum, int product_price, Date product_date, Date product_image_date) {
 		this.product_no = product_no;
 		this.product_name = product_name;
 		this.product_mainInfo = product_mainInfo;
@@ -28,7 +37,13 @@ public class ProductDTO {
 		this.product_image_filetype = product_image_filetype;
 		this.product_image_no = product_image_no;
 		this.rownum = rownum;
+		this.product_price = product_price;
+		this.product_date = product_date;
+		this.product_image_date = product_image_date;
 	}
+
+
+
 
 	public int getProduct_no() {
 		return product_no;
@@ -92,13 +107,45 @@ public class ProductDTO {
 	public void setRownum(int rownum) {
 		this.rownum = rownum;
 	}
+	public int getProduct_price() {
+		return product_price;
+	}
+
+	public void setProduct_price(int product_price) {
+		this.product_price = product_price;
+	}
+	public Date getProduct_date() {
+		return product_date;
+	}
+
+
+	public void setProduct_date(Date product_date) {
+		this.product_date = product_date;
+	}
+
+
+	public Date getProduct_image_date() {
+		return product_image_date;
+	}
+
+
+
+
+	public void setProduct_image_date(Date product_image_date) {
+		this.product_image_date = product_image_date;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "ProductDTO [product_no=" + product_no + ", product_name=" + product_name + ", product_mainInfo="
 				+ product_mainInfo + ", product_stock=" + product_stock + ", product_kind=" + product_kind
 				+ ", product_count=" + product_count + ", product_image_fileName=" + product_image_fileName
 				+ ", product_image_filetype=" + product_image_filetype + ", product_image_no=" + product_image_no
-				+ ", rownum=" + rownum + "]";
+				+ ", rownum=" + rownum + ", product_price=" + product_price + ", product_date=" + product_date
+				+ ", product_image_date=" + product_image_date + "]";
 	}
 	
 	

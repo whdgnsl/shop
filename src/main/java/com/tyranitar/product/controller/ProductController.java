@@ -39,7 +39,12 @@ public class ProductController {
 		Map<String, Object> map = productService.productDetail(product_no);
 		mv.addObject("map",map);
 		mv.setViewName("productDetail");
-		
+		System.out.println("###################map = " + map);
+		HttpSession session = request.getSession();
+		MemberDTO memberDto =(MemberDTO)session.getAttribute("MDTO");
+		Boolean isLogin = (Boolean)session.getAttribute("isLogin");
+		mv.addObject("memberDTO", memberDto);
+		mv.addObject("isLogin", isLogin);
 		return mv;
 	}
 	
@@ -95,36 +100,46 @@ public class ProductController {
 			i++;
 		}
 		
-		System.out.println("subName = "+subName);
-		System.out.println("product_no = "+product_no);
-		System.out.println("mainMap = "+mainMap);
 		productService.productImageWrite(subName,product_no,mainMap);
 		
-		mv.setViewName("redirect:/product.do");
+		HttpSession session = request.getSession();
+		MemberDTO memberDto =(MemberDTO)session.getAttribute("MDTO");
+		Boolean isLogin = (Boolean)session.getAttribute("isLogin");
+		mv.addObject("memberDTO", memberDto);
+		mv.addObject("isLogin", isLogin);
 		
+		mv.setViewName("redirect:/product.do");
 		return mv;
 		
 	}
 	
 	//상품 작성 폼
 	@RequestMapping("productWrite.do")
-	public String productWrite(HttpServletRequest request, HttpServletResponse response
-			) throws Exception{
+	public ModelAndView productWrite(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) throws Exception{
 
-	return "productWrite";
+		HttpSession session = request.getSession();
+		MemberDTO memberDto =(MemberDTO)session.getAttribute("MDTO");
+		Boolean isLogin = (Boolean)session.getAttribute("isLogin");
+		mv.addObject("memberDTO", memberDto);
+		mv.addObject("isLogin", isLogin);
+		mv.setViewName("productWrite");
+		
+	return mv;
 	}
 	
 	//상품 리스트
 	@RequestMapping(value= {"product.do", "main.do"})
 	public ModelAndView productList(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) throws Exception{
-		List<ProductDTO> productList = productService.productList();
-		mv.addObject("productList", productList);
 		
 		if(request.getServletPath().equals("/product.do")) {
+			List<ProductDTO> productList = productService.productList();
 			mv.setViewName("productList");
+			mv.addObject("productList", productList);
 			
 		}else if(request.getServletPath().equals("/main.do")) {
+			List<ProductDTO> productList = productService.productMain();
 			mv.setViewName("main");
+			mv.addObject("productList", productList);
 		}
 		
 		
@@ -133,9 +148,6 @@ public class ProductController {
 		Boolean isLogin = (Boolean)session.getAttribute("isLogin");
 		mv.addObject("memberDTO", memberDto);
 		mv.addObject("isLogin", isLogin);
-		System.out.println("memberDTO = "+ memberDto);
-		System.out.println("isLogin = "+ isLogin);
-		System.out.println(mv);
 		return mv;
 	}
 	

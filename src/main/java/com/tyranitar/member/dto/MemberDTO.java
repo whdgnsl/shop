@@ -1,5 +1,7 @@
 package com.tyranitar.member.dto;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 @Component("memberDTO")
@@ -16,13 +18,12 @@ public class MemberDTO {
 	private char members_isshow;
 	private String members_kind;
 	private String members_addr;
+	private Date members_date;
 	
 	public MemberDTO() {}
-
-
 	public MemberDTO(int members_no, String members_id, String members_full_name, String members_nickname,
 			String members_pw, String members_email, String members_tel, int members_point, char members_isshow,
-			String members_kind, String members_addr) {
+			String members_kind, String members_addr, Date members_date) {
 		this.members_no = members_no;
 		this.members_id = members_id;
 		this.members_full_name = members_full_name;
@@ -34,6 +35,17 @@ public class MemberDTO {
 		this.members_isshow = members_isshow;
 		this.members_kind = members_kind;
 		this.members_addr = members_addr;
+		this.members_date = members_date;
+	}
+
+
+	public Date getMembers_date() {
+		return members_date;
+	}
+
+
+	public void setMembers_date(Date members_date) {
+		this.members_date = members_date;
 	}
 
 
@@ -117,7 +129,7 @@ public class MemberDTO {
 				+ members_full_name + ", members_nickname=" + members_nickname + ", members_pw=" + members_pw
 				+ ", members_email=" + members_email + ", members_tel=" + members_tel + ", members_point="
 				+ members_point + ", members_isshow=" + members_isshow + ", members_kind=" + members_kind
-				+ ", members_addr=" + members_addr + "]";
+				+ ", members_addr=" + members_addr + ", members_date=" + members_date + "]";
 	}
 	
 	

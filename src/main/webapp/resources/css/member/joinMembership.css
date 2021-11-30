@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+*{
+	background-color: #222;
+	margin: 0 auto;
+}
+html{
+	width: 1600px;
+	
+}
+
+.content{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+#logoImg{
+	height: 200px;
+	width: 600px;
+	background-color: #222;
+}
+.main-form{
+}
+#img_td{
+	text-align: center;
+}
+form{
+	width:600px;
+/* 	border: 1px solid #333; */
+	margin: 0 auto;
+}
+table{
+	width:600px;
+	border: 1px solid #333;
+}
+
+.members_id_td{
+	border-top: 1px solid #333;
+}
+.members_id_bt_td{
+	border-bottom: 1px solid #333;
+}
+
+#members_full_name, #members_nickname, #members_id, #members_pw, #members_pw_2{
+	width:200px;
+}
+#members_email_1{
+	width:130px;
+}
+#members_email_2 option{
+	font-size: 0.9rem;
+	padding:3px;
+}
+
+input {
+	color:white;
+}
+
+input[type=text], input[type=password], input[type=tel]{
+	background-color: #444;
+}
+
+input[type=text], input[type=password]{
+	padding:5px;
+}
+input[type=tel]{
+	padding:5px;
+}
+
+select, option{
+	padding:5px;
+	background-color: #444;
+	color:white;
+}
+
+option{
+	margin-top: 5px;
+}
+
+.main-form{
+	width: 700px;
+}
+
+#top_name_tool{
+	display: inline-block;
+	width:130px;
+	color:#777;
+}
+#members_tel{
+	padding: 5px;
+	width:60px;
+}
+#members_tel2, #members_tel3{
+	width:60px;
+}
+
+#postcode{
+	width: 105px;
+}
+#roadAddress, #detailAddress{
+	width: 240px;
+}
+
+#id_Chk, #chkAns_1, #chkAns_2, #nick_chk, #email_chk_done{
+	padding-left: 10px;
+	font-size:1rem;
+	font-weight: 500;
+}
+
+#post_select_bt{
+	background-color : #444;
+	border-color: #777;
+	width: 130px;
+}
+
+#members_full_name_td, #top_name_tool_td, #top_name_tool_td, #top_name_tool_td, #top_name_tool_td, #top_name_tool_td, 
+#top_name_tool_td, #post_td{
+	padding-top:5px;
+	padding-bottom: 5px;
+}
+
+#doneBtn{
+	margin-bottom: 5px;
+}
+
+button{
+  background:#444;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:50px;
+  font-size:1.4em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  width: 600px;
+}
+button:hover{
+  background:#fff;
+  color:#444;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #444;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:600px;
+  transition:800ms ease all;
+}

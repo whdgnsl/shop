@@ -5,6 +5,10 @@
 
 <tiles-definitions>
 
+
+
+
+<!--  -->
 	<definition name="homeLayout" template="/WEB-INF/views/common/homelayout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="body"   value=""/>
@@ -16,6 +20,19 @@
 		<put-attribute name="body"  value="/WEB-INF/views/home.jsp" />
 	</definition>
 	
+	<definition name="memberChange" extends="homeLayout">
+		<put-attribute name="title" value="시가몰" />
+		<put-attribute name="body"  value="/WEB-INF/views/admin/member/memberChange.jsp" />
+	</definition>
+	
+	<definition name="joinMembership" extends="homeLayout">
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="body"  value="/WEB-INF/views/member/joinMembership.jsp" />
+	</definition>
+	
+<!--  -->
+
+
 	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
@@ -31,11 +48,6 @@
 	<definition name="noticeList" extends="baseLayout">
 		<put-attribute name="title" value="공지사항" />
 		<put-attribute name="body"  value="/WEB-INF/views/board/notice/noticeList.jsp" />
-	</definition>
-	
-	<definition name="joinMembership" extends="baseLayout">
-		<put-attribute name="title" value="회원가입" />
-		<put-attribute name="body"  value="/WEB-INF/views/member/joinMembership.jsp" />
 	</definition>
 	
 	<definition name="loginFail" extends="baseLayout">
@@ -68,7 +80,25 @@
 		<put-attribute name="body"  value="/WEB-INF/views/product/productDetail.jsp" />
 	</definition>
 	
+	<definition name="noticeWriter" extends="baseLayout">
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="body"  value="/WEB-INF/views/board/notice/noticeWriter.jsp" />
+	</definition>
 	
+	<definition name="noticeDetail" extends="baseLayout">
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="body"  value="/WEB-INF/views/board/notice/noticeDetail.jsp" />
+	</definition>
+	
+	<definition name="adMemberList" extends="baseLayout">
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="body"  value="/WEB-INF/views/admin/member/memberList.jsp" />
+	</definition>
+	
+	<definition name="orderWriter" extends="baseLayout">
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="body"  value="/WEB-INF/views/order/orderWriter.jsp" />
+	</definition>
 </tiles-definitions>
 
 

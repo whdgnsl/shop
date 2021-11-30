@@ -1,36 +1,44 @@
 @charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
 a{
 	text-decoration: none;
-	background-color:#1E3163;
+}
+html {
+	height: 100%;
+	font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+	width: 1400px;
+}
+body {
+	margin: 0;
+	height: 100%;
 }
 
 .frame{
-	width:100%;
+	width:1360;
+	position: relative;
+	float: left;
 }
-/* #main-menu ul{ */
-/* 	background-color:#1E3163; */
-/* } */
 
 #main-menu li{
-	width:85%;
-	background-color:#1E3163;
 	height:70px;
-/* 	height: 8em; */
-}
-* {
-box-sizing: border-box;
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
+
+	background: #222;
+    width: 1360px;
+    position: fixed;
+    box-shadow: 0 6px 6px rgb(0 0 0 / 35%), inset 0 5px 8px #111;
+    -moz-box-shadow: 0 6px 6px rgba(0,0,0,.35),inset 0 5px 8px #111;
+    -webkit-box-shadow: 0 6px 6px rgb(0 0 0 / 35%), inset 0 5px 8px #111;
+    z-index: 20;
 }
 
-html {
-height: 100%;
-}
 
-body {
-margin: 0;
-height: 100%;
-}
+
+
 
 ul, li {
   margin: 0;
@@ -45,5 +53,10 @@ ul, li {
 
 #logoImg{
 	height: 100%;
-	background-color: #1E3163;
+	background-color: #222;
+}
+
+#logoImg-a{
+	background-color:#222;
+	float: left;
 }

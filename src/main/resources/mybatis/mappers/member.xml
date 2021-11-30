@@ -11,23 +11,42 @@
  
 <!-- member테이블 관련 DML작업을 하는 쿼리문 --> 
 <mapper namespace="member">
+	
+	<!-- 로그인 처리 -->
 	<select id="login" parameterType="hmap" resultType="MemberDTO">
-		SELECT  members_no,members_id,members_full_name, members_nickname, members_pw, members_email,members_tel, member_isShow, members_kind, members_addr
+		SELECT  members_no,members_id,members_full_name, members_nickname, members_pw, members_email,members_tel, member_isShow, members_kind, members_addr, members_date
 		FROM 	MEMBERS
-		WHERE 	members_id = #{members_id} AND members_pw = #{members_pw} AND member_isshow = 'y'
+		WHERE 	members_id = #{members_id} AND member_isshow='y'
 	</select>
 	
+	<!-- 회원가입 처리 -->
 	<insert id="joinMember" parameterType="MemberDTO">
 		insert into members
 		(
-			members_no, members_id, members_full_name, members_nickname, members_pw, members_email, members_tel) values
+			members_no, members_id, members_full_name, members_nickname, members_pw, members_email, members_tel, members_addr, members_date) values
 		(
- 			MEMBERS_NO_SEQ.nextval, #{members_id}, #{members_full_name}, #{members_nickname}, #{members_pw}, #{members_email}, #{members_tel}
+ 			MEMBERS_NO_SEQ.nextval, #{members_id}, #{members_full_name}, #{members_nickname}, #{members_pw}, #{members_email}, #{members_tel}, #{members_addr}, sysdate
  		)
 	</insert>
+
+	<!-- 아이디 중복 확인  -->
+	<select id="idChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBERS WHERE MEMBERS_ID = #{members_id}
+	</select>
 	
+	<!-- 닉네임 중복 확인  -->
+	<select id="nickChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBERS WHERE MEMBERS_NICKNAME = #{members_nickname}
+	</select>
+	
+	<!-- 이메일 중복 확인  -->
+	<select id="emailChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBERS WHERE MEMBERS_EMAIL = #{members_email}
+	</select>
+	
+	<!-- 마이페이지 -->
 	<select id="myPage" parameterType="MemberDTO" resultType="MemberDTO">
-		SELECT  members_no,members_id,members_full_name, members_nickname, members_pw, members_email,members_tel, member_isShow
+		SELECT  members_no,members_id,members_full_name, members_nickname, members_pw, members_email,members_tel, member_isShow, members_addr
 		FROM 	MEMBERS
 		WHERE 	members_no = #{members_no}
 	</select>

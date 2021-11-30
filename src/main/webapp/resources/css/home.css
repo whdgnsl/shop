@@ -1,36 +1,84 @@
 @charset "UTF-8";
 
 *{
-	background-color:#1E3163;
+	background: #222;
+	margin: 0 auto;
 }
+html{
+	width: 1600px;
+}
+
 .content{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
 }
+
 #logoImg{
 	height: 137px;
-	width: 400px;
+	width: 420px;
 }
 #members_id, #members_pw{
 	background-color: white;
-	padding: 5px 10px;
-	width:90%;
+	padding: 10px 10px;
+	width:400px;
+	border: none;
+}
+#members_id{
+	border-bottom: 1px solid #444;
 }
 .button{
-	width: 100%;
+	width: 420px;
 	height:40px;
 }
 .login{
-	background-color: white;
+/* 	background-color: white; */
 /* 	padding: 10px 25px; */
-	width:48%;
+	width:420px;
 	height: 100%;
+	margin-top: 5px;
 }
 .membership{
-	background-color: white;
-/* 	padding: 10px 25px; */
-	width:48%;
+	width:100%;
 	height: 100%;
+}
+
+
+button{
+  background:#444;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:50px;
+  font-size:1.4em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  width: 100%;
+}
+button:hover{
+  background:#fff;
+  color:#444;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #444;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
 }

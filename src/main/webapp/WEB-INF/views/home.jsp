@@ -18,9 +18,9 @@
 <body>
 
 	<div class="content">
-		<img id="logoImg" src="${contextPath}/resources/css/img/vpae-logo.png">
 	
 		<div class="main-form">
+		<img id="logoImg" src="${contextPath}/resources/css/img/vpae-logo.png">
 			<form name="logForm" id="logForm" class="logForm" method="post" action="${contextPath}/member/loginPath.do">
 				<div id="id" class="box">
 					<input type="text" id="members_id" name="members_id" placeholder="ID"> 

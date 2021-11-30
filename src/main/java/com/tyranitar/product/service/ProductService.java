@@ -21,6 +21,13 @@ public class ProductService {
 		return productList;
 	}
 	
+	//상품 리스트 불러오기
+	public  List<ProductDTO> productMain()throws Exception {
+		List<ProductDTO> productList = productDAO.productMain();
+		return productList;
+	}
+	
+	
 	public void productWrite(ProductDTO productDTO)throws Exception {
 		productDAO.productWrite(productDTO);
 	}

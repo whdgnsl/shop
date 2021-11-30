@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+*{
+	background-color: #111;
+	margin: 0 auto;
+}
+html{
+	width: 1600px;
+	
+}
+.content{
+	margin:0 auto; 
+	width:85%;
+	height:100%;
+	height:1000px;
+	float: left;
+}
+body{
+	color: #aaa;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: arial,sans-serif;
+}
+
+.product_kind{
+	color: #aaa;
+    text-decoration: none;
+ 	font-size: 1.0rem;
+    font-family: arial,sans-serif;
+    width: 100px;
+    background-color: #444;
+    padding:5px
+}
+input{
+	background: #444;
+	font-family: arial,sans-serif;
+}
+
+textarea {
+	background: #444;
+	font-family: arial,sans-serif;
+}
+
+#write{
+/* 	padding:10px 15px; */
+	margin-top: 10px;
+}
+form{
+	margin-left: 30px;
+	margin-top: 30px;
+}
+#product_name{
+	width:590px;
+	padding: 5px;
+}
+ #product_stock, #product_price{
+	padding:5px; 
+	width: 345px;
+}
+
+button{
+  background:#444;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:50px;
+  font-size:1.0em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  width: 15%;
+}
+button:hover{
+  background:#fff;
+  color:#444;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #444;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}

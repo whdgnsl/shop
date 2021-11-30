@@ -1,39 +1,86 @@
-<%@ page language="java"         contentType="text/html; charset=utf-8"
-              pageEncoding="utf-8"  isELIgnored="false" %>
+<%@ page language="java" 		  contentType="text/html; charset=utf-8"
+				  pageEncoding="utf-8"  isELIgnored="false" %>
 <%--  tiles를 사용하기위한 taglib 지시어--%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>    
 <%--   jstl를 사용하기위한 taglib 지시어--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--  contextPath를  변수명이 contextPath에 담는 jstl의 core부분 --%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-<%-- 컨트롤러에서 mv.addObject("goodsMap", goodsMap);로 모델을 넘겨 받음 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" media="all" type="text/css" href="${contextPath}/resources/css/board/noticeList.css" />
+<title>Insert title here</title>
+<link rel="stylesheet" media="all" type="text/css" href="${contextPath}/resources/css/board/noticeList.css"/>
+<script type="text/javascript">
+function button(no){
+	var members_no = no;
+	window.open("<c:url value='/memberChange.do?members_no="+members_no+"'/>","회원 정보 변경","width=500px, height=700px");
+}
+</script>
 </head>
 <body>
-
-
-<!-- 메인컨텐츠 영역 -->
 <div class="content">
-	<div class="noticeTitle">Notice</div>
-	<div id="main">
-		<span id="notice_no">No</span>
-		<span id="notice_title">Title</span>
-		<span id="notice_count">Count</span>
-	</div>
+	<c:if test="${memberDTO.members_kind=='운영자'}">
+		<button onclick="location.href='${contextPath}/noticeWriter.do'">새 글 작성</button>
+	</c:if>
+	<table class="noticeTable">
+		<tr>
+			<td id="notice_no">
+				<p>글 번호</p>
+			</td>
+			<td id="notice_title">
+				<p>제목</p>
+			</td>
+			<td id="members_nickname">
+				<p>작성자</p>
+			</td>
+			<td id="notice_date">
+				<p>작성일</p>
+			</td>
+			<td id="notice_count">
+				<p>조회수</p>
+			</td>
+		</tr>
+		
+		<c:forEach items="${boardListDTO.content}" var="notice" varStatus="status">
+			<tr>
+				<td id="notice_no_bt">
+					<p>${notice.notice_no}</p>
+				</td>
+				<td id="notice_title_bt">
+					<p><a href="${contextPath}/noticeDetail.do?notice_no=${notice.notice_no}" name="notice_title">${notice.notice_title}</a></p>
+				</td>
+				<td id="members_nickname_bt">
+					<p>${notice.members_nickname}</p>
+				</td>
+				<td id="notice_date_bt">
+					<p><fmt:formatDate value="${notice.notice_date}" pattern="yyyy.MM.dd HH:mm"/></p>
+				</td>
+				<td id="notice_count_bt">
+					<p>${notice.notice_count}</p>
+				</td>
+			</tr>
+		</c:forEach>
+		
+		<tr>
+			<td id="paging" colspan="5">
+				<c:if test="${boardListDTO.startPage>5}">
+					<a href="${contextPath}/notice.do?pageNo=${boardListDTO.startPage-5}">&lt;&lt;prev</a>
+				</c:if>
+			
+				<c:forEach begin="${boardListDTO.startPage}" end="${boardListDTO.endPage}" step="1" var="pNo">
+					<a href="${contextPath}/notice.do?pageNo=${pNo}">[${pNo}]</a>
+				</c:forEach>
+			
+				<c:if test="${boardListDTO.endPage<boardListDTO.totalPages}">
+					<a href="${contextPath}/notice.do?pageNo=${boardListDTO.startPage+5}">next&gt;&gt;</a>
+				</c:if>
+			</td>
+		</tr>
+	</table>
 	
-	<c:forEach items="${notice}" var="notice" varStatus="status">
-		<div id="main">
-			<span id="notice_no_re">${status.count}</span>
-			<span id="notice_title_re">${notice.notice_title}</span>
-			<span id="notice_count_re">${notice.notice_count}</span>
-		</div>
-	</c:forEach>
 </div>
 </body>
 </html>

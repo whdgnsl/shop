@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="adMember">
+	<select id="memberList" resultType="MemberDTO">
+		SELECT * FROM MEMBERS ORDER BY MEMBERS_NO ASC
+	</select>
+
+	<select id="memberOne" parameterType="MemberDTO" resultType="MemberDTO">
+		SELECT * FROM MEMBERS WHERE MEMBERS_NO=#{members_no}
+	</select>
+	
+	<update id="memberUpdate" parameterType="MemberDTO">
+		UPDATE MEMBERS SET 
+			MEMBERS_TEL = #{members_tel}, MEMBERS_POINT = #{members_point}, MEMBERS_EMAIL = #{members_email}, 
+			MEMBERS_ADDR = #{members_addr}, MEMBERS_KIND = #{members_kind}
+		WHERE MEMBERS_NO = #{members_no}
+		
+	</update>
+	
+</mapper> 
+
+
+
+  

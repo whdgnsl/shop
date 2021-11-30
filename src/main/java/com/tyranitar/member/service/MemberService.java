@@ -15,8 +15,8 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	
 	//로그인
-	public MemberDTO login(Map<String, Object> memberInfo) {
-		MemberDTO memberDTO = memberDAO.login(memberInfo);
+	public MemberDTO login(MemberDTO vo) {
+		MemberDTO memberDTO = memberDAO.login(vo);
 		return memberDTO;
 	}
 	
@@ -25,12 +25,31 @@ public class MemberService {
 		memberDAO.joinMember(memberDTO);
 	}
 
+	//아이디 중복 확인
+	public int idChk(MemberDTO memberDTO) {
+		int result = memberDAO.idChk(memberDTO);
+		return result;
+	}
+
+	//닉네임 중복 확인
+	public int nickNameChk(MemberDTO memberDTO) {
+		int result = memberDAO.nickNameChk(memberDTO);
+		return result;
+	}
+	
+	//이메일 중복 확인
+	public int emailChk(MemberDTO memberDTO) {
+		
+		int result = memberDAO.emailChk(memberDTO);
+		return result;
+	}
+	
 	//마이페이지
-	public MemberDTO myPage(MemberDTO memberDTO) {
-		MemberDTO myInfo = memberDAO.myPage(memberDTO);
+	public MemberDTO myPage(MemberDTO vo) {
+		MemberDTO myInfo = memberDAO.myPage(vo);
 		
 		return myInfo;
 		
 	}
-	
+
 }

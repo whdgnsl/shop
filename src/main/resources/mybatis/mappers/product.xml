@@ -10,23 +10,46 @@
  --> 
  
 <!-- member테이블 관련 DML작업을 하는 쿼리문 --> 
-<mapper namespace="product">
 
-	<select id="productList" resultType="productDTO">
-		<![CDATA[ 
-			SELECT T.* FROM  
+
+<!-- SELECT T.* FROM  
 				(SELECT     p.*,   pi.product_Image_filename,rownum
 			     FROM 		product p, product_Image pi
 			     WHERE 		p.product_no = pi.product_no
         		 AND pi.product_IMAGE_FILETYPE='main'
 			     ORDER BY  rownum) T
-			WHERE rownum<16 and product_show='y'
+			WHERE rownum<16 and product_show='y' -->
+			
+			
+<mapper namespace="product">
+
+	<select id="productMain" resultType="productDTO">
+		<![CDATA[ 
+			SELECT T.* FROM  
+				(SELECT     p.*,   pi.product_Image_filename
+			     FROM 		product p, product_Image pi
+			     WHERE 		p.product_no = pi.product_no
+        		 AND pi.product_IMAGE_FILETYPE='main'
+			     ORDER BY  p.product_date desc) T
+			WHERE rownum<15 and product_show='y'
+		]]>
+	</select>
+
+	<select id="productList" resultType="productDTO">
+		<![CDATA[ 
+			SELECT T.* FROM  
+				(SELECT     p.*,   pi.product_Image_filename
+			     FROM 		product p, product_Image pi
+			     WHERE 		p.product_no = pi.product_no
+        		 AND pi.product_IMAGE_FILETYPE='main'
+			     ORDER BY  p.product_date desc) T
+			WHERE product_show='y'
 		]]>
 	</select>
 	 
 	 <insert id="productWrite" parameterType="productDTO">
-	 	insert into product(product_no, product_name, product_mainInfo, product_stock, product_kind) values(
-	 		product_no_seq.nextval, #{product_name}, #{product_mainInfo}, #{product_stock}, #{product_kind}
+	 	insert into product(product_no, product_name, product_mainInfo, product_stock, product_kind, product_date, product_price) values(
+	 		product_no_seq.nextval, #{product_name}, #{product_mainInfo}, #{product_stock}, #{product_kind}, sysdate, #{product_price}
 	 	)
 	 	
 	 </insert>
@@ -37,14 +60,14 @@
 	
 	<insert id="productMainImageWrite" parameterType="java.util.HashMap">
 		insert into product_image values(
-			#{product_no}, product_image_no_seq.nextval, #{mName}, 'main'
+			#{product_no}, product_image_no_seq.nextval, #{mName}, 'main', sysdate
 		)
 	</insert>
 	
 	<insert id="productSubImageWrite" parameterType="java.util.HashMap">
 	<![CDATA[ 
 		insert into product_image values(
-			#{product_no}, product_image_no_seq.nextval, #{subName},'sub'
+			#{product_no}, product_image_no_seq.nextval, #{subName},'sub', sysdate
 		)
 		]]>
 	</insert>
@@ -60,6 +83,7 @@
 			WHERE PRODUCT_NO = #{product_no} AND PRODUCT_SHOW='y'
 		]]>
 	</select>
+	
 	<!-- 	상품 이미지 상세 조회 -->
 	<select id="productDetailImage" parameterType="Integer" resultType="productDTO">
 		<![CDATA[ 
@@ -68,6 +92,18 @@
 				FROM 		PRODUCT P, PRODUCT_IMAGE PI
 				WHERE 		P.PRODUCT_NO = PI.PRODUCT_NO
 				AND PI.PRODUCT_IMAGE_FILETYPE='sub'
+				ORDER BY  PI.PRODUCT_IMAGE_NO DESC) T
+			WHERE PRODUCT_NO = #{product_no} and PRODUCT_SHOW='y' 
+		]]>
+	</select>
+
+	<select id="productDetailImageMain" parameterType="Integer" resultType="productDTO">
+		<![CDATA[ 
+			SELECT T.* FROM  
+				(SELECT     P.*,   PI.PRODUCT_IMAGE_FILENAME, PI.PRODUCT_IMAGE_FILETYPE, PI.PRODUCT_IMAGE_NO
+				FROM 		PRODUCT P, PRODUCT_IMAGE PI
+				WHERE 		P.PRODUCT_NO = PI.PRODUCT_NO
+				AND PI.PRODUCT_IMAGE_FILETYPE='main'
 				ORDER BY  PI.PRODUCT_IMAGE_NO DESC) T
 			WHERE PRODUCT_NO = #{product_no} and PRODUCT_SHOW='y' 
 		]]>

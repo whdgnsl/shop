@@ -12,7 +12,41 @@
 <!-- member테이블 관련 DML작업을 하는 쿼리문 --> 
 <mapper namespace="board">
 	<select id="noticeList" resultType="BoardDTO">
-		SELECT NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_COUNT, NOTICE_SHOW FROM NOTICE WHERE NOTICE_SHOW ='y'
+		SELECT NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_COUNT, NOTICE_SHOW, NOTICE_DATE, MEMBERS_NICKNAME FROM NOTICE 
+			WHERE NOTICE_SHOW ='y' 
+			ORDER BY NOTICE_DATE DESC
+	</select>
+	
+	<insert id="noticeDone" parameterType="BoardDTO">
+		insert into notice(notice_no, notice_title, notice_content, notice_show, members_nickname, notice_date, members_id) values(
+			notice_no_seq.nextval, #{notice_title}, #{notice_content}, 'y', #{members_nickname}, sysdate, #{members_id})
+	</insert>
+	
+	<select id="noticeDetail" parameterType="BoardDTO" resultType="BoardDTO">
+		SELECT NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_COUNT, NOTICE_SHOW, NOTICE_DATE, MEMBERS_NICKNAME FROM NOTICE 
+			WHERE NOTICE_NO = #{notice_no} AND notice_show = 'y'
+	</select>
+	
+	<select id="noticeCount" resultType="int">
+		SELECT COUNT(*) FROM NOTICE
+	</select>
+
+			<!-- select * from 
+			(select ROWNUM num, a.* from notice a where notice_show='y')  
+			where num between #{start} and #{end} order by notice_no desc, num desc -->
+			<!-- SELECT ROWNUM num, notice.*
+				FROM (SELECT *
+            	FROM notice
+            	ORDER BY notice_date desc) notice 
+				WHERE ROWNUM BETWEEN #{start} AND #{end} -->
+	<select id="noticePage" parameterType="hashMap" resultType="BoardDTO">
+		select * from (
+			select ROWNUM num, A.* from (
+				SELECT * FROM notice 
+				ORDER BY notice_no DESC 
+			)A
+		)
+		where num between #{start} and #{end}
 	</select>
 </mapper> 
 

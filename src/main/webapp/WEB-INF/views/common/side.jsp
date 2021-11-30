@@ -17,40 +17,51 @@
 		<li class="menu">
 			<a href="javascript:void()" class="menu-trigger">Menu</a>
 	 			<ul class="hide">
-	 			<c:if test="${MDTO==null}">
-		 			<li id="real-sub-menu7">
-		 				<form name="logForm" id="logForm" class="logForm" method="post" action="${contextPath}/member/loginPath.do">
-								<div id="id" class="box">
-<!-- 									<span>ID</span> -->
-										<input type="text" id="members_id" name="members_id" placeholder="ID"> 
-								</div>
-								<div id="pw" class="box">
-<!-- 									<span>PW</span> -->
-										<input type="password" id="members_pw" name="members_pw" placeholder="PW">
-								</div>
-									<button type="submit" class="login" id="logForm" name="logForm"  >LOGIN</button>
-									<button type="button" id="membership" onclick="location.href='${contextPath}/joinmembership.do'" >JOIN</button>
-							</form>
-						</li>
-					</c:if>
 					
-					<c:if test="${MDTO != null}">
+					<c:if test="${MDTO != null && MDTO.members_kind!='운영자'}">
 						<li>
 							<div class="loginmember">
 								<span class="membersNickName">${MDTO.members_nickname}님</span><br>
 								<span class="membersPoint">${MDTO.members_point} 포인트</span>
 								<span class="myPage" onClick="location.href='${contextPath}/myPage.do?members_no=${MDTO.members_no}'">My Page</span>
-								<span class="membersList">주문내역</span>
+								<span class="orderList">주문내역</span>
 								<span class="logout" onclick="location.href='${contextPath}/logout.do'">로그아웃</span>
 							</div>
 						</li>
 					</c:if>
 					
-					<li><a href="${contextPath}/product.do" id="real-sub-menu1">Store</a></li>
-					<li><a href="${contextPath}/notice.do" id="real-sub-menu2">Notice</a></li>
-					<li><a href="#" id="real-sub-menu3">Review</a></li>
-					<li><a href="#" id="real-sub-menu4">Free</a></li>
-					<li><a href="#" id="real-sub-menu5">CS</a></li>
+					<c:if test="${MDTO.members_kind=='운영자'}">
+						<li>
+							<div class="loginmember">
+								<span class="membersNickName">${MDTO.members_full_name}님</span>
+								<span class="membersPoint">ADMIN</span></br>
+<%-- 								<span class="memberMG" onClick="location.href='${contextPath}/membersMG.do'">회원 관리</span> --%>
+								<button id="button" class="memberMG" onClick="location.href='${contextPath}/membersMG.do'">회원 관리</button>
+<%-- 								<span class="orderMG" onClick="location.href='${contextPath}/membersMG.do'">주문 관리</span> --%>
+								<button id="button" class="orderMG" onClick="location.href='${contextPath}/membersMG.do'">주문 관리</button>
+<%-- 								<span class="logout" onclick="location.href='${contextPath}/logout.do'">로그아웃</span> --%>
+								<button id="button" class="logout" onclick="location.href='${contextPath}/logout.do'">로그아웃</button>
+							</div>
+						</li>
+					</c:if>
+					
+					<li>
+						<button id="sub-menu-button" onClick="location.href='${contextPath}/product.do'">Store</button>
+					</li>
+					<li>
+<%-- 						<a href="${contextPath}/notice.do" id="real-sub-menu2">Notice</a> --%>
+						<button id="sub-menu-button" onClick="location.href='${contextPath}/notice.do'">Notice</button>
+					</li>
+					<li>
+						<button id="sub-menu-button" onClick="location.href='${contextPath}/notice.do'">Review</button>
+					</li>
+					<li>
+						<button id="sub-menu-button" onClick="location.href='${contextPath}/notice.do'">Free</button>
+					</li>
+					<li>
+						<button id="sub-menu-button" onClick="location.href='${contextPath}/notice.do'">CS</button>
+					</li>
+					
 				</ul>
 			</li>
 		</ul>

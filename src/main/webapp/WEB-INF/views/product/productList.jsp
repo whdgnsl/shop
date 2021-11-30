@@ -17,30 +17,33 @@
 </head>
 <body>
 
+<!-- 메인컨텐츠 영역 -->
+<div class="content">
+		
+		<div class="button">
+			<c:if test="${memberDTO.members_kind=='운영자'}">
+				<button onclick="location.href='${contextPath}/productWrite.do'">새 글 작성</button>
+			</c:if>
+		</div>
 
-
-<div id="content">	
-	<div id="main">
-			<c:forEach  var="productList"  items="${productList}">
-				<div id="product">
-					<span>
-						<a href="${contextPath}/productDetail.do?product_no=${productList.product_no}">
-							<img class="productImg" src="${contextPath}/thumbnails.do?product_no=${productList.product_no}&product_image_fileName=${productList.product_image_fileName}">
-						</a>
-					
-						<div id="product">
-							<span>[${productList.product_kind}]</span> 
-							<span>${productList.product_name}</span>
-						</div>
-					</span>
-				</div>
-			</c:forEach>
-		<c:if test="${memberDTO.members_kind=='ad'}">
-			<div id="WriteForm">
-		   		<h2><a href="${contextPath}/productWrite.do">작성</a></h2> 
-			</div>
-		</c:if>
-	</div>
-</div>
+		<c:forEach  var="productList"  items="${productList}">
+			<span class="product">
+				<span>
+					<a href="${contextPath}/productDetail.do?product_no=${productList.product_no}" id="link">
+						<img class="productImg" src="${contextPath}/thumbnails.do?product_no=${productList.product_no}&product_image_fileName=${productList.product_image_fileName}">
+					</a>
+					<div id="productTitle">
+						<a href="${contextPath}/productDetail.do?product_no=${productList.product_no}" id="link">
+							<span id="product_kind">[${productList.product_kind}]</span><br/>
+							<span id="product_name">${productList.product_name}</span>
+						</a><br>
+							<span class="product_price"><fmt:formatNumber value="${productList.product_price}" pattern="#,###"/>원</span>
+					</div>
+				</span>
+			</span>
+		</c:forEach>
+		
+</div>	
+	
 </body>
 </html>
