@@ -1,3 +1,9 @@
+<strong>[v1.0.2]</strong><br /> 
+<strong>전체적 CSS 변경</strong>
+<strong>기능 추가</strong><br /> 
+<strong>추가 중인 내용</strong><br>
+-주문하기, 장바구니 구현중
+
 <strong>[v1.0.1]</strong><br /> 
 <strong>1.메인 페이지 구현</strong><br /> 
  -메인 로고 추가<br /> 
