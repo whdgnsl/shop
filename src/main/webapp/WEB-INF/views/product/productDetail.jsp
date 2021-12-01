@@ -53,7 +53,7 @@
 				</tr>
 				<tr>
 				<td id="product_quick_info">
-					<span>배송방법  </span>
+					<span>배송방법</span>
 				</td>
 				<td id="product_quick_info">
 					<span>로젠택배</span>
